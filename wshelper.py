@@ -13,7 +13,7 @@ ws_addr = raw_input("ex. ws://192.168.25.27:8080 ou wss\n")
 print "Entre o JSON de conexao inicial com a aplicacao"
 ws_json = raw_input('ex. {"event":"login","data":{"player_name":"breno"}}\n')
 if ws_addr.find("wss")==-1:
-	ws = create_connection(ws_addr, origin="http://www.google.com")
+	ws = create_connection(ws_addr, origin="http://google.com")
 	ws.send(ws_json)
 	result =  ws.recv()
 	print "Received '%s'" % result
@@ -24,11 +24,11 @@ if ws_addr.find("wss")==-1:
 		origin=False
 	else:
 		origin=True
-    print "Origin seguro"
+		print "Origin seguro"
 
 #PARTE 2 - VERIFICACAOO DE SSL
 if (ws_addr.find("wss")!=-1):
-	print "Por favor aguarde enquanto o testssl roda... será criado um arquivo output.html com o resultado do teste"
+	print "Por favor aguarde enquanto o testssl roda... sera criado um arquivo output.html com o resultado do teste"
 	os.system("./testssl/testssl.sh " + ws_addr[6:]+" | aha > output.html")
 else:
 	print "Endereco ws -> sem conexao segura"
